@@ -138,7 +138,9 @@ async function main(
           tool_choice: "auto",
           ...restProperties,
         });
-        outputs.push(chatCompletion);
+
+        const assistantResponse = chatCompletion.choices[0].message.content || 'No response.';
+        messageHistory.push({ role: 'assistant', content: assistantResponse });
 
         // Check if the assistant's response contains a tool call
         const toolCalls = chatCompletion.choices[0].message.tool_calls;
@@ -161,11 +163,10 @@ async function main(
             ...restProperties,
           });
           const secondAssistantResponse = secondResponse.choices[0].message.content || 'No response.';
+          outputs.push(secondResponse);
           messageHistory.push({ role: 'assistant', content: secondAssistantResponse });
         } else {
-          const assistantResponse =
-            chatCompletion.choices[0].message.content || 'No response.';
-          messageHistory.push({ role: 'assistant', content: assistantResponse });
+          outputs.push(chatCompletion);
         }
 
       } catch (error) {
@@ -174,9 +175,7 @@ async function main(
         outputs.push(completionWithError);
       }
     }
-    console.log(messageHistory)
-    console.log("Outputs:")
-    console.log(outputs)
+
     return mapToResponse(outputs, model);
   } catch (error) {
     console.error('Error in main function:', error);
