@@ -1,5 +1,5 @@
 export const config = {
-  connectorName: 'OpenAI with Function calling',
+  connectorName: 'OpenAI with Test Function calling',
   connectorVersion: '1.0.0',
   models: [
     'gpt-4-turbo',

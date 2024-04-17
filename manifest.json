@@ -1,6 +1,6 @@
 {
   "id": "prompt-mixer-open-ai-with-functions-connector",
-  "name": "Open AI Connector",
+  "name": "OpenAI with Test Function calling",
   "version": "1.0.0",
   "minAppVersion": "0.1.0",
   "description": "OpenAI Connector with a testing function that simulates a database request returning a user list from the database",
