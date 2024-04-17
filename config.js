@@ -20,7 +20,7 @@ export const config = {
     'gpt-3.5-turbo-16k-0613'
   ],
   description:
-    'OpenAI Connector to test the Prompt Mixer with function calling',
+    'OpenAI Connector with a testing function that simulates a database request returning a user list from the database',
   author: 'Prompt Mixer',
   properties: [
     {
